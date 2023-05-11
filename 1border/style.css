@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+* {margin: 0; padding: 0;}
+
+.loader {
+    background-color: #ccc;
+    height: 100vh;
+    
+}
+.loader .blob {
+    position: relative;
+    width: 480px;
+    height: 480px;
+    overflow: hidden;
+    left: calc(50% - 240px); /* %와 px를 같이 쓸 땐 calc(계산기)이용 */
+    top: calc(50% - 240px);
+    /* 수평:h,수직:v,왼쪽:l,오른쪽:r, 위쪽:t,아래쪽:b */ 
+    /* border-radius: 20px => topleft,toppright,bottomright,bottomleft */
+    /* 사각형의 수평 / 수직 */
+    /* border-radius : 38%(수평인데 위에서 왼쪽) 62% 55%(수평인데 바닥에서 오른쪽) 45% /
+    38%(수직인데 위에서 왼쪽) 43% 57% 62%(수직인데 바닥에서 왼쪽)  */
+    /* border-radius: htl htr hbr hbl / vtl vtr vbr vbl  */
+    border-radius: 42% 58% 63% 37% / 38% 43% 57% 62%;
+    animation: go 5s linear infinite alternate;
+    
+}
+.loader .blob img {
+    width: 100%;
+}
+.ro {
+    width: 480px; height: 480px;
+    position: absolute;
+    left: calc(50% - 240px);
+    top: calc(50% - 240px);
+    animation: rotate 6s linear infinite alternate ;
+}
+.ro .blob2 {
+    position: absolute;
+    top: 0; left: 0;
+    width: 480px; height: 480px;
+    border: 1px solid #888;
+    animation: go 3s linear infinite alternate;
+}
+.ro .blob2.lb2 {
+    animation-delay: 2s; 
+    animation-fill-mode: both;
+}
+
+@keyframes go {
+    0% {
+        border-radius:50% 50% 50% 50% / 50% 50% 50% 50%;
+        transform: scale(0.98);
+    }
+    50%{border-radius:62% 38% 62% 38% / 59% 56% 44% 41% }
+    100%{border-radius:66% 34% 53% 47% / 61% 67% 33% 39% }
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg); /*  각도(degree)의 약자 */
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
